@@ -3,6 +3,7 @@
 #include <cstdio>
 
 //#define DEBUG_MODE
+#define USE_KINECTV2 1
 
 #ifdef DEBUG_MODE
 #include <QDebug>
@@ -50,7 +51,11 @@ void mouseHandler(int event, int x, int y, int flags, void* param)
 
 bool getROI(cv::Point2f& topLeft, cv::Point2f& bottomRight, cv::Mat& capImage){
 	bool ret = false;
+#ifdef USE_KINECTV2
 	KinectVideoCapture cap = KinectVideoCapture(0);
+#else
+	cv::VideoCapture cap = cv::VideoCapture(0);
+#endif
 	cv::Mat img;
 	cv::Mat imDraw;
 	std::string title("get_rect");
@@ -112,7 +117,11 @@ int main(int argc, char *argv[])
 	}
 
 	try{
+#ifdef USE_KINECTV2
 		KinectVideoCapture cap = KinectVideoCapture(0);
+#else
+		cv::VideoCapture cap = cv::VideoCapture(0);
+#endif
 		cv::Mat capImg;
 		cv::Mat im_gray;
 		//cmt.estimateRotation = false;

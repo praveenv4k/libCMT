@@ -33,6 +33,8 @@ KinectVideoCapture::KinectVideoCapture()
 {
 	mXResolution = cColorWidth;
 	mYResolution = cColorHeight;
+	mXResolution = 640;
+	mYResolution = 480;
 	m_bPrevFrame = false;
 	m_bCapturing = false;
 	m_bGrabbed = false;
@@ -308,7 +310,7 @@ bool KinectVideoCapture::processColor(INT64 nTime, RGBQUAD* pBuffer, int nWidth,
 	{
 		cv::Mat bufMat(nHeight, nWidth, CV_8UC4, pBuffer);
 		bufMat.copyTo(mMatrix);
-		printf("Size: %d,%d\n", mMatrix.cols, mMatrix.rows);
+		//printf("Size: %d,%d\n", mMatrix.cols, mMatrix.rows);
 		ret = true;
 	}
 	return ret;
