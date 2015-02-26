@@ -1,5 +1,5 @@
 #include "CMT.h"
-
+#include "KinectVideoCapture.h"
 #include <cstdio>
 
 //#define DEBUG_MODE
@@ -50,7 +50,7 @@ void mouseHandler(int event, int x, int y, int flags, void* param)
 
 bool getROI(cv::Point2f& topLeft, cv::Point2f& bottomRight, cv::Mat& capImage){
 	bool ret = false;
-	cv::VideoCapture cap = cv::VideoCapture(0);
+	KinectVideoCapture cap = KinectVideoCapture(0);
 	cv::Mat img;
 	cv::Mat imDraw;
 	std::string title("get_rect");
@@ -59,6 +59,7 @@ bool getROI(cv::Point2f& topLeft, cv::Point2f& bottomRight, cv::Mat& capImage){
 		printf("Cannot read from video input device\n");
 		return ret;
 	}
+	Sleep(3000);
 	cv::namedWindow(title);
 	cv::moveWindow(title, 100, 100);
 	cv::setMouseCallback(title, mouseHandler, 0);
@@ -111,7 +112,7 @@ int main(int argc, char *argv[])
 	}
 
 	try{
-		cv::VideoCapture cap = cv::VideoCapture(0);
+		KinectVideoCapture cap = KinectVideoCapture(0);
 		cv::Mat capImg;
 		cv::Mat im_gray;
 		//cmt.estimateRotation = false;
