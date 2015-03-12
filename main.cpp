@@ -3,7 +3,7 @@
 #include <cstdio>
 
 //#define DEBUG_MODE
-#define USE_KINECTV2 1
+//#define USE_KINECTV2 1
 
 #ifdef DEBUG_MODE
 #include <QDebug>
